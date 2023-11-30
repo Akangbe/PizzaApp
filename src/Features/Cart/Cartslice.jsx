@@ -30,7 +30,7 @@ const cartSlice=createslice({
               // payload=pizzaid
               const item =state.cart.find((item)=>item.pizzaId=== action.payload)
               item.quatity--;
-              item.totalPrice=item.quatity * item.unitPrice
+            //   item.totalPrice=item.quatity * item.unitPrice
         },
         clearCart(state, action){},
     }
