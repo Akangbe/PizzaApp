@@ -9,7 +9,7 @@ import SearchOrder from '../Features/Order/SearchOrder';
 function Header() {
   return (
     <header className=' flex items-center justify-between bg-blue-500 uppercase py-3 px-4 border-b border-stone-200 sm:px-6 '>
-      <Link to="/" className='uppercase tracking-widest'>B&B Fast React Co.</Link>
+      <Link to="/" className='uppercase tracking-widest'>Fast React Co. UK</Link>
       <SearchOrder />
       <Username />
     </header>
