@@ -1,8 +1,10 @@
+import { useDispatch } from "react-redux";
 import Buttons from "../../UI/Buttons";
 import { formatCurrency } from "../../Utilis/helpers"; // Verify the import path
 import addItem from "../Cart/Cartslice"
-function MenuItem({ pizza }) {
-  const dispatach =useDispatch()
+// import useDispatch from "react-redux"
+function MenuItem({ pizza}) {
+  const dispatch =useDispatch()
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
 function handleAddToCart(){
 const newItem={
@@ -12,7 +14,7 @@ const newItem={
   unitPrice,
   totalPrice: unitPrice*1,
 }
-dispatach(addItem(newItem));
+dispatch(addItem(newItem));
 }
   return (
     <li className="flex gap-4 py-2 ">

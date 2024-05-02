@@ -1,54 +1,38 @@
-
-
-
-
-import { Link } from 'react-router-dom';
-import Buttons from '../../UI/Buttons';
 import LinkButton from '../../UI/LinkButton';
-// Import CartItem if available
-import CartItem from './CartItem'; // Import CartItem if available in the same directory
-import { useSelector } from 'react-redux';
-
-const fakeCart = [
-  {
-    pizzaId: 12,
-    name: 'Mediterranean',
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: 'Vegetable',
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: 'Spinach and Mushroom',
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
+import Button from '../../UI/Buttons';
+import CartItem from './CartItem';
+import EmptyCart from './EmptyCart (1)';
+import { useDispatch, useSelector } from 'react-redux';
+// import { clearCart, getCart } from './CartItem';
+import { clearCart, getCart } from './Cartslice';
 
 function Cart() {
-  const cart = fakeCart;
-  const username =useSelector((state)=>state.user.username)
+  const username = useSelector((state) => state.user.username);
+  const cart = useSelector(getCart);
+  const dispatch = useDispatch();
+
+  if (!cart.length) return <EmptyCart />;
+
   return (
-    <div className='px-4 py-3'>
-      <LinkButton to="/menu" className='text-blue-500 hover:text-blue-800 hover:underline'>&larr; Back to menu</LinkButton>
+    <div className="px-4 py-3">
+      <LinkButton to="/menu">&larr; Back to menu</LinkButton>
 
-      <h2 className='mt-7 text-xl font-semibold'>Your cart, {username}</h2>
+      <h2 className="mt-7 text-xl font-semibold">Your cart, {username}</h2>
 
-      <ul className='divide-y divide-stone-200 border-b mt-3 '>
-        {cart.map(item => <CartItem item={item} key={item.pizzaId} />)} {/* Using item.pizzaId as a key */}
+      <ul className="mt-3 divide-y divide-stone-200 border-b">
+        {cart.map((item) => (
+          <CartItem item={item} key={item.pizzaId} />
+        ))}
       </ul>
 
-      <div className='mt-6 space-x-2'> 
-        <Buttons to="/order/new" type="primary">Order pizzas</Buttons>
-        <Buttons type="secondary">Clear cart</Buttons>
+      <div className="mt-6 space-x-2">
+        <Button to="/order/new" type="primary">
+          Order pizzas
+        </Button>
+
+        <Button type="secondary" onClick={() => dispatch(clearCart())}>
+          Clear cart
+        </Button>
       </div>
     </div>
   );

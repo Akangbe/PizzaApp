@@ -1,6 +1,5 @@
+// const API_URL = "https://react-fast-pizza-api.onrender.com/api";
 const API_URL = "https://react-fast-pizza-api.onrender.com/api";
-
-// const API_URL = {"https://foodish-api.herokuapp.com/images/biryani/biryani32.jpg"}
 
 export async function getMenu() {
   const res = await fetch(`${API_URL}/menu`);
