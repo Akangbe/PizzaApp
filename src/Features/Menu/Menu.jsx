@@ -1,21 +1,22 @@
-import { useLoaderData } from "react-router-dom"
-import {getMenu} from "../../Services/apiRestaurant"
-import MenuItem from "../../Features/Menu/MenuItem"
-// import MenuItem from "../../Features/Menu/MenuItem";
+import { useLoaderData } from 'react-router-dom';
+import { getMenu } from '../../Services/apiRestaurant';
+import MenuItem from './MenuItem';
+
 function Menu() {
-  const menu =useLoaderData();
-  console.log(menu)
+  const menu = useLoaderData();
 
-return(
-  <ul className="space-y-2 px-2 divide-y divide-stone-200">
-    {/* {menu.map((pizza)=> <Menuitem pizza={pizza} key={pizza.id}/>)} */}
-    {menu.map((pizza)=><MenuItem pizza={pizza} key={pizza.id}/>)}
-  </ul>
-)
-}
-export async function Loader(){
-    const menu =await getMenu()
-    return menu
+  return (
+    <ul className="divide-y divide-stone-200 px-2">
+      {menu.map((pizza) => (
+        <MenuItem pizza={pizza} key={pizza.id} />
+      ))}
+    </ul>
+  );
 }
 
-export default Menu; 
+export async function loader() {
+  const menu = await getMenu();
+  return menu;
+}
+
+export default Menu;

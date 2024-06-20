@@ -3,7 +3,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./UI/Home";
 import AppLayout from "./UI/AppLayout";
-import Menu, { Loader as menuLoader } from "./Features/Menu/Menu";
+import Menu, { loader as menuLoader } from "./Features/Menu/Menu";
 import Cart from "./Features/Cart/Cart";
 import Order, { loader as Orderlaoder } from "./Features/Order/Order";
 import Error from "./UI/Error";
